@@ -1,0 +1,22 @@
+flowchart    
+    TB1[Acessar a tabela] --> TB2{Pessoa existe?}
+    TB2 --sim--> P[Acessar o Persona]
+    TB2 --"não"--> TB3[Acrescentar usuario na tabela]
+    TB3 --> P
+    P --> P1[Conferir se a pessoa existe]
+    P1 --> P2
+    P2{Pessoa existe?} --sim--> T[Acessar o Tarifone]
+    P2 --"não"--> P3[Cadastrar Pessoa]
+    P3 --> T
+    T --> T1[Acessar o menu Cadastro/Contas]
+    T1 --> T2{Pesquisar usuario</br>e verificar conta atribuida}
+    T2 --existe--> E[Acessar Explorer]
+    T2 --"não existe"--> T3[Criar nova conta</br>e atribuir ao usuário]
+    T3 --> E
+    E --> E1[Acessar Plataforma/Contas] 
+    E1 --> E2{Verificar se a conta do</br>Tarifone existe</br>no Explorer}
+    E2 --existe--> S[Atualizar senha]
+    E2 --"não existe"--> S1[Cadastrar conta</br>com o mesmo</br>número do Tarifone]
+    S1 --> TB4[Atualizar usuário na tabela]
+    S --> TB4
+    TB4 --> EM[Enviar dados para o</br>e-mail cadastrado]
